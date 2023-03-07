@@ -37,7 +37,7 @@ describe("test knex with sqlite3", () => {
     await sqlite3Knex.destroy();
   });
 
-  test("test add column to a not exists table", async () => {
+  test("test migration", async () => {
     await sqlite3Knex.migrate.latest();
     await sqlite3Knex.migrate.rollback({}, true);
   });

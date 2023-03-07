@@ -19,21 +19,32 @@ export type User = {
   name: string;
 };
 
-const config: Knex.Config = {
-  client: "mysql2",
-  connection: {
-    host: "127.0.0.1",
-    user: "root",
-    password: "123",
-    database: "compare-js-orm-lib",
+export const config: { [key: string]: Knex.Config } = {
+  mysql: {
+    client: "mysql2",
+    connection: {
+      host: "127.0.0.1",
+      user: "root",
+      password: "123",
+      database: "compare-js-orm-lib",
+    },
+  },
+  sqlite3: {
+    client: "sqlite3",
+    connection: {
+      filename: "unit.test.db",
+    },
+    debug: true,
+    useNullAsDefault: true,
+    migrations: {
+      directory: "./knex/migrations",
+    },
   },
 };
 
-export const knexInstance = knex(config);
-
 export const getUsers = async () => {
   try {
-    const users = await knexInstance<User>("users").select("id", "age");
+    const users = await knex(config.mysql)<User>("users").select("id", "age");
     return users;
   } catch (err) {
     // error handling

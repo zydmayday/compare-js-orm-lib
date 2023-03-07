@@ -1,1 +1,1 @@
-# compare-js-orm-lib
+# Learn how to use knex

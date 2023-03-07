@@ -1,10 +1,23 @@
 import { Knex, knex } from "knex";
 
-export interface User {
+interface CustomColumn {
+  name: string;
+  isInput: boolean;
+  isOutput: boolean;
+  shouldClear: boolean;
+  field: string;
+}
+
+interface CustomTable {
+  columns: CustomColumn[];
+  name: string;
+}
+
+export type User = {
   id: number;
   age: number;
   name: string;
-}
+};
 
 const config: Knex.Config = {
   client: "mysql2",

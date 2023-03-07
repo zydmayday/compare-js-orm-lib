@@ -18,6 +18,7 @@
   "homepage": "https://github.com/zydmayday/compare-js-orm-lib#readme",
   "dependencies": {
     "knex": "^2.4.2",
+    "lodash": "^4.17.21",
     "mysql2": "^3.0.1"
   },
   "devDependencies": {
